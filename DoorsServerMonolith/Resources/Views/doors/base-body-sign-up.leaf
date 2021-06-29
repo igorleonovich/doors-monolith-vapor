@@ -1,0 +1,21 @@
+#var(title = "Sign Up")
+#define(styles):
+  <link rel="stylesheet" href="/styles/doors/auth.css">
+#enddefine
+#define(scripts):
+  <script src="js/doors/signup.js"></script>
+  <script src="js/doors/login.js"></script>
+#enddefine
+#define(contentContainer):
+  <div class="input">
+    <h4>SIGN UP</h4>
+    <label for="username">Username</label>
+    <input id="username" value="il">
+    <label for="email">Email</label>
+    <input id="email" value="il@ft.com">
+    <label for="password">Password</label>
+    <input id="password" type="password" value="123">
+    <button onclick="signUp()">Create account</button>
+  </div>
+#enddefine
+#inline("doors/base-body")

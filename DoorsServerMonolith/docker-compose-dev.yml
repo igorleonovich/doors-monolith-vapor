@@ -1,0 +1,39 @@
+# Use postgres/example user/password credentials
+version: '3'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: doors_database
+      POSTGRES_USER: vapor_username
+      POSTGRES_PASSWORD: vapor_password
+    ports:
+      - 5432:5432
+
+  # db-test:
+  #   image: postgres
+  #   restart: always
+  #   environment:
+  #     POSTGRES_DB: doors_database-test
+  #     POSTGRES_USER: vapor_username
+  #     POSTGRES_PASSWORD: vapor_password
+  #   ports:
+  #     - 5433:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8100:8080
+
+  redis:
+    image: 'bitnami/redis:5.0'
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      ALLOW_EMPTY_PASSWORD: 1
+      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
+    ports:
+      - 6379:6379

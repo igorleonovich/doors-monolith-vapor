@@ -1,0 +1,23 @@
+#define(body):
+<div id="main-container">
+  <nav id="navigation">
+    <div id="menu-button"><a title="Menu" href="#" onclick="clickMenu();return false;"></a></div>
+    <div id="logo">
+      <a id="logo-link" href="/">#(pageTitle)</a>
+    </div>
+    <div id="account-button"><a title="Account" href="#" onclick="clickAccount();return false;"></a></div>
+  </nav>
+  <div id="menu-popup" data-opened="false">
+    <ul>
+      <li><a href="#" onclick="return false;">Item 1</a></li>
+      <li><a href="#" onclick="return false;">Item 2</a></li>
+    </ul>
+  </div>
+  <div id="account-popup" data-haspopup="false">a</div>
+  <div id="content-container">
+    #evaluate(contentContainer)
+  </div>
+</div>
+<div id="main-container-overlay"><div id="loader"></div></div>
+#enddefine
+#inline("doors/base")

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>#evaluate(title)</title>
+    <link rel="stylesheet" href="/styles/doors/base.css">
+    <link rel="stylesheet" href="/styles/doors/loader.css">
+    #evaluate(styles)
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="js/doors/setup.js"></script>
+    <script src="js/doors/network.js"></script>
+    <script src="js/doors/auth.js"></script>
+    <script src="js/doors/refresh-access-token.js"></script>
+    <script src="js/doors/logout.js"></script>
+    <script src="js/doors/cookies.js"></script>
+    <script src="js/doors/base.js"></script>
+    <script src="js/doors/scroll.js"></script>
+    #evaluate(scripts)
+  </head>
+  <body>
+    #evaluate(body)
+  </body>
+  <script src="js/doors/account-popup.js"></script>
+  #evaluate(afterScripts)
+</html>

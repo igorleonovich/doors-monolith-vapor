@@ -1,0 +1,10 @@
+#var(title = "Home")
+#define(styles):
+    <link rel="stylesheet" href="/styles/doors/home.css">
+#enddefine
+#define(scripts):
+#enddefine
+#define(contentContainer):
+<p>Welcome to the next-gen ecosystem</p>
+#enddefine
+#inline("doors/base-body")

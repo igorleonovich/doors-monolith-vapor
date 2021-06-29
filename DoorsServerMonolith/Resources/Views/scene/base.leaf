@@ -1,0 +1,7 @@
+#define(styles):
+  <link rel="stylesheet" href="/styles/scene/base.css">
+#enddefine
+#define(contentContainer):
+<div id="editor" contenteditable="true" spellcheck="false"></div>
+#enddefine
+#inline("doors/base-body")

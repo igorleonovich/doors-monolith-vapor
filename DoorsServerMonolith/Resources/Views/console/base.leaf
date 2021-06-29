@@ -1,0 +1,34 @@
+#var(title = "Doors Console")
+#define(styles):
+  <link rel="stylesheet" href="/styles/console/base.css">
+#enddefine
+#define(afterScripts):
+  <script src="js/console/console.js"></script>
+#enddefine
+#define(contentContainer):
+  <div class="root-container">
+      <div class="main-container">
+        <div class="left-container lr-side-container console-part">
+          <p>Left Panel</p>
+        </div>
+        <div class="right-container lr-side-container console-part">
+          <p>Right Panel</p>
+        </div>
+      </div>
+      <div class="terminal-container console-part">
+        <div class="terminal-log">
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+          <p>2020-01-10 event</p>
+        </div>
+        <input class="terminal-input" type="text"/>
+      </div>
+  </div>
+#enddefine
+#inline("doors/base-body")
