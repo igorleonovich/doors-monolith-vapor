@@ -3,22 +3,22 @@ import Vapor
 
 func routes(_ app: Application) throws {
     
-//    app.get { req in
-//        return req.view.render("doors/base-body-home",  ["pageTitle": "D O O R S"])
-//    }
-//
-//    app.get("signup") { req in
-//        return req.view.render("doors/base-body-sign-up", ["pageTitle": "D O O R S"])
-//    }
-//
-//    app.get("login") { req in
-//        return req.view.render("doors/base-body-log-in", ["pageTitle": "D O O R S"])
-//    }
-//
-//    app.get("console") { req in
-//        return req.view.render("console/base", ["pageTitle": "C O N S O L E"])
-//    }
-//
+    app.get { req in
+        return req.view.render("doors/base-body-home",  ["pageTitle": "D O O R S"])
+    }
+
+    app.get("signup") { req in
+        return req.view.render("doors/base-body-sign-up", ["pageTitle": "D O O R S"])
+    }
+
+    app.get("login") { req in
+        return req.view.render("doors/base-body-log-in", ["pageTitle": "D O O R S"])
+    }
+
+    app.get("console") { req in
+        return req.view.render("console/base", ["pageTitle": "C O N S O L E"])
+    }
+
 //    app.get("scene") { req in
 //        return req.view.render("scene/base", ["pageTitle": "S C E N E"])
 //    }
