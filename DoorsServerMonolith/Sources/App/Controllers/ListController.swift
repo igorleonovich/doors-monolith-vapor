@@ -44,7 +44,7 @@ extension ListsController {
         return Point.query(on: req.db).all()
           .flatMap { points in
             points.forEach { point in
-                if let dataPoint = data.points.first(where: { $0.userID == point.id }) {
+                if let dataPoint = data.points.first(where: { $0.id == point.id }) {
                     point.id = dataPoint.id
                     point.$user.id = dataPoint.userID
                     point.$superPoint.id = dataPoint.superPointID
