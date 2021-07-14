@@ -74,7 +74,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/Shared/doors/il/projects/doors/doors-servers/doors-server-monolith/DoorsServerMonolith"
+      customWorkingDirectory = "/Users/Shared/doors/il/projects/ft/doors/doors-servers/doors-server-monolith/DoorsServerMonolith"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
