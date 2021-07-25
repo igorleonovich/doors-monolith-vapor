@@ -31,6 +31,7 @@ services:
 
   redis:
     image: 'bitnami/redis:5.0'
+    restart: always
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       ALLOW_EMPTY_PASSWORD: 1
