@@ -1,6 +1,6 @@
 import Foundation
 
-let file = "scene.md" //this is the file. we will write to and read from it
+let file = "plan.md" //this is the file. we will write to and read from it
 
 struct MarkdownPoint {
     let text: String
@@ -10,8 +10,8 @@ struct MarkdownPoint {
     }
 }
 
-let markdownPointScene = MarkdownPoint(text: "Scene")
-let markdownPointCurrentScene = MarkdownPoint(text: "Current Scene")
+let markdownPointPlan = MarkdownPoint(text: "Plan")
+let markdownPointCurrentPlan = MarkdownPoint(text: "Current Plan")
 
 if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 
@@ -19,7 +19,7 @@ if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMa
 
     //writing
     do {
-        try text.write(to: fileURL, atomically: false, encoding: .utf8)
+        try markdownPointPlan.text.write(to: fileURL, atomically: false, encoding: .utf8)
     }
     catch {/* error handling here */}
 

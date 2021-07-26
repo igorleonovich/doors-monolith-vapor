@@ -72,11 +72,3 @@ final class User: Model, Authenticatable {
         self.doorsServicesInactive = doorsServicesInactive
     }
 }
-
-public enum Role: String, Codable {
-    case empty, guest, use, test, dev, publish, admin
-}
-
-public enum DoorsService: String, Codable {
-    case id, plan, bank, engine, teker
-}

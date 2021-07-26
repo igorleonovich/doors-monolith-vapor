@@ -10,9 +10,14 @@ func migrations(_ app: Application) throws {
     app.migrations.add(CreateEmailToken())
     app.migrations.add(CreatePasswordToken())
     
-    // Scene
-    app.migrations.add(CreateLevel())
-    app.migrations.add(CreateBlockType())
-    app.migrations.add(CreateBlock())
-    app.migrations.add(CreatePoint())
+    // Plan
+    app.migrations.add(CreateDataElement())
+    app.migrations.add(CreateDataElementAlias())
+    app.migrations.add(CreateDataElementContainer())
+    
+    app.migrations.add(CreateMarkupElement())
+    app.migrations.add(CreateMarkupElementAlias())
+    app.migrations.add(CreateMarkupElementContainer())
+    
+    app.migrations.add(CreateElement())
 }

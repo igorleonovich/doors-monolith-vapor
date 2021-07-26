@@ -1,5 +1,5 @@
 #define(styles):
-  <link rel="stylesheet" href="/styles/scene/base.css">
+  <link rel="stylesheet" href="/styles/plan/base.css">
 #enddefine
 #define(contentContainer):
 <div id="editor" contenteditable="true" spellcheck="false"></div>

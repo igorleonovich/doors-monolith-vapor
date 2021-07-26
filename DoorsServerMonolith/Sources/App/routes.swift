@@ -19,8 +19,8 @@ func routes(_ app: Application) throws {
         return req.view.render("console/base", ["pageTitle": "C O N S O L E"])
     }
 
-//    app.get("scene") { req in
-//        return req.view.render("scene/base", ["pageTitle": "S C E N E"])
+//    app.get("plan") { req in
+//        return req.view.render("plan/base", ["pageTitle": "P L A N"])
 //    }
     
     try app.group("api") { api in
@@ -28,10 +28,5 @@ func routes(_ app: Application) throws {
         try api.register(collection: AuthenticationController())
         try api.register(collection: UsersController())
         try api.register(collection: DoorsServicesController())
-        try api.register(collection: LevelsController())
-        try api.register(collection: BlockTypesController())
-        try api.register(collection: BlocksController())
-        try api.register(collection: PointsController())
-        try api.register(collection: ListsController())
     }
 }
