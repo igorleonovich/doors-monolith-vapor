@@ -82,6 +82,9 @@ final class MarkupElement: Model, Codable {
     @OptionalParent(key: "byTimeMarkupElement")
     var byTimeMarkupElement: ByTimeMarkupElement?
     
+    @OptionalParent(key: "byTopicMarkupElement")
+    var byTopicMarkupElement: ByTopicMarkupElement?
+    
     @OptionalParent(key: "byXMarkupElement")
     var byXMarkupElement: ByXMarkupElement?
     
@@ -93,7 +96,7 @@ final class MarkupElement: Model, Codable {
     
     init() {}
 
-    init(id: UUID? = nil, userID: User.IDValue, type: MarkupElementType, orderedUnorderedMarkupElementID: OrderedUnorderedMarkupElement.IDValue? = nil, actionsPointsMarkupElementID: ActionsPointsMarkupElement.IDValue? = nil, dateMarkupElementID: DateMarkupElement.IDValue? = nil, byTimeMarkupElementID: ByTimeMarkupElement.IDValue? = nil, byXMarkupElementID: ByXMarkupElement.IDValue? = nil, levelMarkupElementID: LevelMarkupElement.IDValue? = nil, planMarkupElementID: PlanMarkupElement.IDValue? = nil) {
+    init(id: UUID? = nil, userID: User.IDValue, type: MarkupElementType, orderedUnorderedMarkupElementID: OrderedUnorderedMarkupElement.IDValue? = nil, actionsPointsMarkupElementID: ActionsPointsMarkupElement.IDValue? = nil, dateMarkupElementID: DateMarkupElement.IDValue? = nil, byTimeMarkupElementID: ByTimeMarkupElement.IDValue? = nil, byTopicMarkupElementID: ByTopicMarkupElement.IDValue? = nil, byXMarkupElementID: ByXMarkupElement.IDValue? = nil, levelMarkupElementID: LevelMarkupElement.IDValue? = nil, planMarkupElementID: PlanMarkupElement.IDValue? = nil) {
         self.id = id
         self.$user.id = userID
         self.type = type
@@ -101,6 +104,7 @@ final class MarkupElement: Model, Codable {
         self.$actionsPointsMarkupElement.id = actionsPointsMarkupElementID
         self.$dateMarkupElement.id = dateMarkupElementID
         self.$byTimeMarkupElement.id = byTimeMarkupElementID
+        self.$byTopicMarkupElement.id = byTopicMarkupElementID
         self.$byXMarkupElement.id = byXMarkupElementID
         self.$levelMarkupElement.id = levelMarkupElementID
         self.$planMarkupElement.id = planMarkupElementID
@@ -108,7 +112,7 @@ final class MarkupElement: Model, Codable {
 }
 
 enum MarkupElementType: String, Codable {
-    case orderedUnordered, pointAction, date, byTime, byX, level, plan
+    case orderedUnordered, pointAction, date, byTime, byTopic, byX, level, plan
 }
 
 final class OrderedUnorderedMarkupElement: Model, Codable {
@@ -209,6 +213,28 @@ final class ByTimeMarkupElement: Model, Codable {
 
 enum ByTimeMarkupElementType: String, Codable {
     case before, now, next
+}
+
+final class ByTopicMarkupElement: Model, Codable {
+    
+    static let schema = "by-topic-markup-elements"
+
+    @ID
+    var id: UUID?
+    
+    @Parent(key: "userID")
+    var user: User
+    
+    @Field(key: "topic")
+    var topic: String
+    
+    init() {}
+
+    init(id: UUID? = nil, userID: User.IDValue, topic: String) {
+        self.id = id
+        self.$user.id = userID
+        self.topic = topic
+    }
 }
 
 final class ByXMarkupElement: Model, Codable {

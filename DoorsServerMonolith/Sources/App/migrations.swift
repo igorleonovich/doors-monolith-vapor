@@ -19,6 +19,7 @@ func migrations(_ app: Application) throws {
     app.migrations.add(CreateActionsPointsMarkupElement())
     app.migrations.add(CreateDateMarkupElement())
     app.migrations.add(CreateByTimeMarkupElement())
+    app.migrations.add(CreateByTopicMarkupElement())
     app.migrations.add(CreateByXMarkupElement())
     app.migrations.add(CreateLevelMarkupElement())
     app.migrations.add(CreatePlanMarkupElement())

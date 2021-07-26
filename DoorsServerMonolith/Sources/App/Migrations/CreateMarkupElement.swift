@@ -44,6 +44,7 @@ struct CreateMarkupElement: Migration {
             .case("pointAction")
             .case("date")
             .case("byTime")
+            .case("byTopic")
             .case("byX")
             .case("level")
             .case("plan")
@@ -57,6 +58,7 @@ struct CreateMarkupElement: Migration {
                     .field("actionsPointsMarkupElementID", .uuid, .references("actions-points-markup-elements", "id"))
                     .field("dateMarkupElementID", .uuid, .references("date-markup-elements", "id"))
                     .field("byTimeMarkupElement", .uuid, .references("by-time-markup-elements", "id"))
+                    .field("byTopicMarkupElement", .uuid, .references("by-topic-markup-elements", "id"))
                     .field("byXMarkupElement", .uuid, .references("by-x-markup-elements", "id"))
                     .field("levelMarkupElement", .uuid, .references("level-markup-elements", "id"))
                     .field("planMarkupElement", .uuid, .references("plan-markup-elements", "id"))
@@ -149,6 +151,20 @@ struct CreateByTimeMarkupElement: Migration {
         return database.schema("by-time-markup-elements").delete().flatMap {
             return database.enum("by_time_markup_element_types").delete()
         }
+    }
+}
+
+struct CreateByTopicMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("by-topic-markup-elements")
+            .id()
+            .field("userID", .uuid, .required, .references("users", "id"))
+            .field("topic", .string, .required)
+            .create()
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("by-topic-markup-elements").delete().flatMap
     }
 }
 
