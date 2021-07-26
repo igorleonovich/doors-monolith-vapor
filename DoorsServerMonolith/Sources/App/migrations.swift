@@ -4,7 +4,6 @@ import FluentSQL
 func migrations(_ app: Application) throws {
     // User
     app.migrations.add(CreateUser())
-    app.migrations.add(UserAddDoorsServices())
     
     // Auth
     app.migrations.add(CreateRefreshToken())
@@ -16,11 +15,4 @@ func migrations(_ app: Application) throws {
     app.migrations.add(CreateBlockType())
     app.migrations.add(CreateBlock())
     app.migrations.add(CreatePoint())
-    
-//    if let sql = app.db as? SQLDatabase {
-//        let string = """
-//        """
-//        let queryString = SQLQueryString(string)
-//        let _ = sql.raw(queryString)
-//    }
 }
