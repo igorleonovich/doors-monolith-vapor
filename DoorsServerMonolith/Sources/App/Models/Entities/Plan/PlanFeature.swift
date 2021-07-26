@@ -1,5 +1,5 @@
 //
-//  PlanFeatures.swift
+//  PlanFeature.swift
 //  
 //
 //  Created by Igor Leonovich on 26.07.21
@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum PlanFeatures: String, Codable {
+enum PlanFeature: String, Codable {
     case plan
     case actionsPoints, dates, byTime, byTopic, byX, levels
     case fullTreeView
     
-    func requiredFeatures() -> [PlanPlugin] {
+    func requiredFeatures() -> [PlanFeature] {
         switch self {
         case .plan:
             return [.plan]

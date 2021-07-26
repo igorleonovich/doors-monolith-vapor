@@ -57,11 +57,11 @@ struct CreateMarkupElement: Migration {
                     .field("orderedUnorderedMarkupElementID", .uuid, .references("ordered-unordered-markup-elements", "id"))
                     .field("actionsPointsMarkupElementID", .uuid, .references("actions-points-markup-elements", "id"))
                     .field("dateMarkupElementID", .uuid, .references("date-markup-elements", "id"))
-                    .field("byTimeMarkupElement", .uuid, .references("by-time-markup-elements", "id"))
-                    .field("byTopicMarkupElement", .uuid, .references("by-topic-markup-elements", "id"))
-                    .field("byXMarkupElement", .uuid, .references("by-x-markup-elements", "id"))
-                    .field("levelMarkupElement", .uuid, .references("level-markup-elements", "id"))
-                    .field("planMarkupElement", .uuid, .references("plan-markup-elements", "id"))
+                    .field("byTimeMarkupElementID", .uuid, .references("by-time-markup-elements", "id"))
+                    .field("byTopicMarkupElementID", .uuid, .references("by-topic-markup-elements", "id"))
+                    .field("byXMarkupElementID", .uuid, .references("by-x-markup-elements", "id"))
+                    .field("levelMarkupElementID", .uuid, .references("level-markup-elements", "id"))
+                    .field("planMarkupElementID", .uuid, .references("plan-markup-elements", "id"))
                     .create()
             }
     }
@@ -164,7 +164,7 @@ struct CreateByTopicMarkupElement: Migration {
     }
 
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("by-topic-markup-elements").delete().flatMap
+        return database.schema("by-topic-markup-elements").delete()
     }
 }
 
@@ -178,7 +178,7 @@ struct CreateByXMarkupElement: Migration {
                 database.schema("by-x-markup-elements")
                 .id()
                 .field("userID", .uuid, .required, .references("users", "id"))
-                    .field("type", byXMarkupElementType, .required)
+                .field("type", byXMarkupElementType, .required)
                 .create()
             }
     }
