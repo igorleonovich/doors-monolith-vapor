@@ -15,6 +15,14 @@ func migrations(_ app: Application) throws {
     app.migrations.add(CreateDataElementAlias())
     app.migrations.add(CreateDataElementContainer())
     
+    app.migrations.add(CreateOrderedUnorderedMarkupElement())
+    app.migrations.add(CreateActionsPointsMarkupElement())
+    app.migrations.add(CreateDateMarkupElement())
+    app.migrations.add(CreateByTimeMarkupElement())
+    app.migrations.add(CreateByXMarkupElement())
+    app.migrations.add(CreateLevelMarkupElement())
+    app.migrations.add(CreatePlanMarkupElement())
+    
     app.migrations.add(CreateMarkupElement())
     app.migrations.add(CreateMarkupElementAlias())
     app.migrations.add(CreateMarkupElementContainer())

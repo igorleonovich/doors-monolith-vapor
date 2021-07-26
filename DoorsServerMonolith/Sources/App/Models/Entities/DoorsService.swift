@@ -8,6 +8,6 @@
 
 import Foundation
 
-public enum DoorsService: String, Codable {
+enum DoorsService: String, Codable {
     case id, plan, bank, engine, teker
 }

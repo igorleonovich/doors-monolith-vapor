@@ -28,10 +28,11 @@ final class Element: Model, Codable {
 
     init() {}
 
-    init(id: UUID? = nil, userID: User.IDValue, superElementID: Element.IDValue? = nil, dataElementContainerID: DataElementContainer.IDValue? = nil, index: Int) {
+    init(id: UUID? = nil, userID: User.IDValue, superElementID: Element.IDValue? = nil, markupElementContainerID: MarkupElementContainer.IDValue? = nil, dataElementContainerID: DataElementContainer.IDValue? = nil, index: Int) {
         self.id = id
         self.$user.id = userID
         self.$superElement.id = superElementID
+        self.$markupElementContainer.id = markupElementContainerID
         self.$dataElementContainer.id = dataElementContainerID
         self.index = index
         self.flipFlag = false

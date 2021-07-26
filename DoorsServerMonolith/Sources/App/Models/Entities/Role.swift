@@ -8,6 +8,6 @@
 
 import Foundation
 
-public enum Role: String, Codable {
+enum Role: String, Codable {
     case empty, guest, use, test, dev, publish, admin
 }

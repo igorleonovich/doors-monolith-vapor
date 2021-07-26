@@ -28,7 +28,7 @@ struct CreateMarkupElementAlias: Migration {
         return database.schema("markup-element-aliases")
             .id()
             .field("userID", .uuid, .required, .references("users", "id"))
-            .field("markupElementID", .uuid, .references("markup-elements", "id"))
+            .field("markupElementID", .uuid, .required, .references("markup-elements", "id"))
             .create()
     }
 
@@ -52,12 +52,150 @@ struct CreateMarkupElement: Migration {
                 return database.schema("markup-elements")
                     .id()
                     .field("userID", .uuid, .required, .references("users", "id"))
-                    .field("markup-element-type", markupElementType, .required, .custom("DEFAULT 'orderedUnordered'"))
+                    .field("type", markupElementType, .required, .custom("DEFAULT 'orderedUnordered'"))
+                    .field("orderedUnorderedMarkupElementID", .uuid, .references("ordered-unordered-markup-elements", "id"))
+                    .field("actionsPointsMarkupElementID", .uuid, .references("actions-points-markup-elements", "id"))
+                    .field("dateMarkupElementID", .uuid, .references("date-markup-elements", "id"))
+                    .field("byTimeMarkupElement", .uuid, .references("by-time-markup-elements", "id"))
+                    .field("byXMarkupElement", .uuid, .references("by-x-markup-elements", "id"))
+                    .field("levelMarkupElement", .uuid, .references("level-markup-elements", "id"))
+                    .field("planMarkupElement", .uuid, .references("plan-markup-elements", "id"))
                     .create()
             }
     }
 
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("markup-elements").delete()
+        return database.schema("markup-elements").delete().flatMap {
+            return database.enum("markup_element_types").delete()
+        }
+    }
+}
+
+struct CreateOrderedUnorderedMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.enum("ordered_unordered_markup_element_types")
+            .case("ordered")
+            .case("unordered")
+            .create()
+            .flatMap { orderedUnorderedMarkupElementType in
+                database.schema("ordered-unordered-markup-elements")
+                .id()
+                .field("userID", .uuid, .required, .references("users", "id"))
+                .field("type", orderedUnorderedMarkupElementType, .required)
+                .create()
+            }
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("ordered-unordered-markup-elements").delete().flatMap {
+            return database.enum("ordered_unordered_markup_element_types").delete()
+        }
+    }
+}
+
+struct CreateActionsPointsMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.enum("actions_points_markup_element_types")
+            .case("actions")
+            .case("points")
+            .create()
+            .flatMap { actionsPointsMarkupElementType in
+                database.schema("actions-points-markup-elements")
+                .id()
+                .field("userID", .uuid, .required, .references("users", "id"))
+                .field("type", actionsPointsMarkupElementType, .required)
+                .create()
+            }
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("actions-points-markup-elements").delete().flatMap {
+            return database.enum("actions_points_markup_element_types").delete()
+        }
+    }
+}
+
+struct CreateDateMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("date-markup-elements")
+            .id()
+            .field("userID", .uuid, .required, .references("users", "id"))
+            .field("date", .date, .required)
+            .create()
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("date-markup-elements").delete()
+    }
+}
+
+struct CreateByTimeMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.enum("by_time_markup_element_types")
+            .case("before")
+            .case("now")
+            .case("next")
+            .create()
+            .flatMap { byTimeMarkupElementType in
+                database.schema("by-time-markup-elements")
+                .id()
+                .field("userID", .uuid, .required, .references("users", "id"))
+                .field("type", byTimeMarkupElementType, .required)
+                .create()
+            }
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("by-time-markup-elements").delete().flatMap {
+            return database.enum("by_time_markup_element_types").delete()
+        }
+    }
+}
+
+struct CreateByXMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.enum("by_x_markup_element_types")
+            .case("time")
+            .case("topic")
+            .create()
+            .flatMap { byXMarkupElementType in
+                database.schema("by-x-markup-elements")
+                .id()
+                .field("userID", .uuid, .required, .references("users", "id"))
+                    .field("type", byXMarkupElementType, .required)
+                .create()
+            }
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("by-x-markup-elements").delete().flatMap {
+            return database.enum("by_x_markup_element_types").delete()
+        }
+    }
+}
+
+struct CreateLevelMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("level-markup-elements")
+            .id()
+            .field("userID", .uuid, .required, .references("users", "id"))
+            .create()
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("level-markup-elements").delete()
+    }
+}
+
+struct CreatePlanMarkupElement: Migration {
+    func prepare(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("plan-markup-elements")
+            .id()
+            .field("userID", .uuid, .required, .references("users", "id"))
+            .create()
+    }
+
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        return database.schema("plan-markup-elements").delete()
     }
 }
