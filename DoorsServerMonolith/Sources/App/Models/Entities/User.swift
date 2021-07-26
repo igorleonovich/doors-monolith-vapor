@@ -57,7 +57,7 @@ final class User: Model, Authenticatable {
         passwordHash: String,
         role: Role = .empty,
         doorsServicesActive: [DoorsService] = [.id],
-        doorsServicesInactive: [DoorsService] = [.scene]
+        doorsServicesInactive: [DoorsService] = [.plan]
     ) {
         self.id = id
         self.username = username
@@ -78,5 +78,5 @@ public enum Role: String, Codable {
 }
 
 public enum DoorsService: String, Codable {
-    case id, scene, engine, bank, arteka
+    case id, plan, bank, engine, teker
 }
