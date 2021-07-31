@@ -35,7 +35,11 @@ RUN cp "$(swift build --package-path /build -c release --show-bin-path)/Run" ./
 # Ensure that by default, neither the directory nor any of its contents are writable.
 RUN [ -d /build/Public ] && { mv /build/Public ./Public && chmod -R a-w ./Public; } || true
 RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w ./Resources; } || true
+
+# Custom copy
 RUN [ -d /build/ProtectedResources ] && { mv /build/ProtectedResources ./ProtectedResources && chmod -R a-w ./ProtectedResources; } || true
+RUN [ -d /build/.env ] && { mv /build/.env ./.env && chmod a-w ./.env; } || true
+RUN [ -d /build/.env.production ] && { mv /build/.env.production ./.env.production && chmod a-w ./.env.production; } || true
 
 # ================================
 # Run image
