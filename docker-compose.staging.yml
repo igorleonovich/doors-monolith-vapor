@@ -20,7 +20,7 @@ services:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '${DATABASE_PORT}:5432'
+      - ${DATABASE_PORT}:5432
 
   redis-stage:
     image: bitnami/redis:5.0
@@ -31,7 +31,7 @@ services:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
       REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     ports:
-      - '${REDIS_PORT}:6379'
+      - ${REDIS_PORT}:6379
 
   api.doorsid.com-app-stage:
     image: api.doorsid.com:latest
@@ -44,7 +44,7 @@ services:
     depends_on:
       - db-${DEPLOYMENT_ENVIRONMENT_SHORT}
     ports:
-      - '${APP_PORT}:8080'
+      - ${APP_PORT}:8080
     # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
 
