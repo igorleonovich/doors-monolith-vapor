@@ -12,6 +12,31 @@ x-shared_environment: &shared_environment
 
 services:
 
+  db:
+    image: postgres
+    container_name: db
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+    restart: always
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: doors_database
+      POSTGRES_USER: vapor_username
+      POSTGRES_PASSWORD: vapor_password
+    ports:
+      - 5432:5432
+
+  redis:
+    image: 'bitnami/redis:5.0'
+    container_name: redis
+    restart: always
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      ALLOW_EMPTY_PASSWORD: 1
+      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
+    ports:
+      - 6379:6379
+
   api.doorsid.com-app:
     image: api.doorsid.com:latest
     container_name: api.doorsid.com-app
@@ -22,7 +47,7 @@ services:
     depends_on:
       - db
     ports:
-      - '8070:8080'
+      - 8070:8080
     # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8070"]
 
@@ -49,28 +74,3 @@ services:
   #   command: ["migrate", "--revert", "--yes"]
   #   deploy:
   #     replicas: 0
-
-  db:
-    image: postgres
-    container_name: db
-    volumes:
-      - db_data:/var/lib/postgresql/data/pgdata
-    restart: always
-    environment:
-      PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_DB: doors_database
-      POSTGRES_USER: vapor_username
-      POSTGRES_PASSWORD: vapor_password
-    ports:
-      - 5432:5432
-
-  redis:
-    image: 'bitnami/redis:5.0'
-    container_name: redis
-    restart: always
-    environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      ALLOW_EMPTY_PASSWORD: 1
-      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
-    ports:
-      - 6379:6379
