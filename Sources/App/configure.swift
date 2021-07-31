@@ -9,14 +9,8 @@ import Vapor
 
 public func configure(_ app: Application) throws {
     
-    // MARK: - Leaf
-    if !app.environment.isRelease {
-        LeafRenderer.Option.caching = .bypass
-    }
-    
-    if app.environment != .testing {
-        app.views.use(.leaf)
-    }
+    // MARK: App Config
+    app.config = .environment
     
     // MARK: JWT
     if app.environment != .testing {
@@ -54,7 +48,7 @@ public func configure(_ app: Application) throws {
     app.middleware.use(cors)
     
     // MARK: Error Middleware
-    app.middleware.use(ErrorMiddleware.custom(environment: app.environment))
+//    app.middleware.use(ErrorMiddleware.custom(environment: app.environment))
     
     // MARK: Route Logging Middleware
     // Only add this if you want to enable the default per-route logging
@@ -69,9 +63,6 @@ public func configure(_ app: Application) throws {
     // MARK: Mailgun
     app.mailgun.configuration = .environment
     app.mailgun.defaultDomain = .sandbox
-    
-    // MARK: App Config
-    app.config = .environment
     
     // MARK: Routing
     try routes(app)

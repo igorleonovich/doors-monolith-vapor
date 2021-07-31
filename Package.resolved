@@ -74,24 +74,6 @@
         }
       },
       {
-        "package": "leaf",
-        "repositoryURL": "https://github.com/vapor/leaf",
-        "state": {
-          "branch": null,
-          "revision": "a8348b682ec14a863cc470a2da8f0ebc262c6088",
-          "version": "4.0.0-tau.1"
-        }
-      },
-      {
-        "package": "leaf-kit",
-        "repositoryURL": "https://github.com/vapor/leaf-kit",
-        "state": {
-          "branch": null,
-          "revision": "8b965e6e2eadfe5914ea133669368aceb2b89ccb",
-          "version": "1.0.0-tau.1.1"
-        }
-      },
-      {
         "package": "mailgun",
         "repositoryURL": "https://github.com/vapor-community/mailgun.git",
         "state": {

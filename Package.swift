@@ -14,10 +14,6 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
         
-        // Leaf
-        .package(url: "https://github.com/vapor/leaf", .exact("4.0.0-tau.1")),
-        .package(url: "https://github.com/vapor/leaf-kit", .exact("1.0.0-tau.1.1")),
-        
         // JWT
         .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
         
@@ -34,7 +30,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
-                .product(name: "Leaf", package: "leaf"),
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "JWT", package: "jwt"),
                 .product(name: "QueuesRedisDriver", package: "queues-redis-driver"),
