@@ -75,3 +75,6 @@ services:
   #   command: ["migrate", "--revert", "--yes"]
   #   deploy:
   #     replicas: 0
+networks:
+  default:
+    name: api.doorsid.com-network
