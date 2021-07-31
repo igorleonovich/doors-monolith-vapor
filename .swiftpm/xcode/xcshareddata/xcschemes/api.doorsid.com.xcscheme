@@ -91,7 +91,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "serve -b 0.0.0.0:8070"
+            argument = "serve -b 0.0.0.0:8080"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
