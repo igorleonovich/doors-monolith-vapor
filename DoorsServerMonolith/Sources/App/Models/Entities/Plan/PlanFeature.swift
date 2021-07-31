@@ -9,28 +9,55 @@
 import Foundation
 
 enum PlanFeature: String, Codable {
+    
+    // Default
+    static let elementList = PlanFeature.plan
     case plan
+    
+    // Markup
     case actionsPoints, dates, byTime, byTopic, byX, levels
-    case fullTreeView
+    
+    // Representing
+    case fullTreeView, asterisksNumbers
+    
+    // Advanced Representing
+    case cardTableView
+    
+    // Controlling
+    case actionDelegating
+    
+    // Auto Insert (from: Boards, Bank, etc.)
+    case autoInsert
+    
+    // Cross-Integration: Cross-Dependency, Duplication Avoiding
+    case crossIntegration
+}
+
+
+extension PlanFeature {
     
     func requiredFeatures() -> [PlanFeature] {
         switch self {
         case .plan:
-            return [.plan]
+            return [.elementList]
         case .actionsPoints:
-            return [.plan]
+            return [.elementList]
         case .dates:
-            return [.plan]
+            return [.elementList]
         case .byTime:
-            return [.plan, .byX]
+            return [.elementList, .byX]
         case .byTopic:
-            return [.plan, .byX]
+            return [.elementList, .byX]
         case .byX:
-            return [.plan]
+            return [.elementList]
         case .levels:
-            return [.plan]
-        case .fullTreeView:
-            return [.plan]
+            return [.elementList]
+        case .fullTreeView, .asterisksNumbers:
+            return [.elementList]
+        case .cardTableView:
+            return [.elementList]
+        default:
+            return [.elementList]
         }
     }
 }
