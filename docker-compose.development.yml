@@ -5,9 +5,9 @@ volumes:
 
 services:
 
-  db:
+  db-${DEPLOYMENT_ENVIRONMENT_SHORT}:
     image: postgres
-    container_name: db
+    container_name: db-${DEPLOYMENT_ENVIRONMENT_SHORT}
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     restart: always
@@ -17,11 +17,11 @@ services:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '5432:5432'
+      - '${DATABASE_PORT}:5432'
 
-  redis:
+  redis-${DEPLOYMENT_ENVIRONMENT_SHORT}:
     image: bitnami/redis:5.0
-    container_name: redis
+    container_name: redis-${DEPLOYMENT_ENVIRONMENT_SHORT}
     restart: always
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
@@ -29,7 +29,7 @@ services:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
       REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     ports:
-      - '6379:6379'
+      - '${REDIS_PORT}:6379'
 
   # db-test:
   #   image: postgres

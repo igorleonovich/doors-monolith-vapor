@@ -8,6 +8,8 @@ if [ $# -eq 0 ]
     case "$1" in
       dev) DEPLOYMENT_ENVIRONMENT="development"
           ;;
+      stage) DEPLOYMENT_ENVIRONMENT="staging"
+          ;;
       prod) DEPLOYMENT_ENVIRONMENT="production"
           ;;
     esac

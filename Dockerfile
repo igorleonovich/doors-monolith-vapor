@@ -38,8 +38,6 @@ RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w
 
 # Custom copy
 RUN [ -d /build/ProtectedResources ] && { mv /build/ProtectedResources ./ProtectedResources && chmod -R a-w ./ProtectedResources; } || true
-RUN [ -d /build/.env ] && { mv /build/.env ./.env && chmod a-w ./.env; } || true
-RUN [ -d /build/.env.production ] && { mv /build/.env.production ./.env.production && chmod a-w ./.env.production; } || true
 
 # ================================
 # Run image
