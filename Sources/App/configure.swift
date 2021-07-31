@@ -20,7 +20,7 @@ public func configure(_ app: Application) throws {
     
     // MARK: JWT
     if app.environment != .testing {
-        let jwksFilePath = app.directory.workingDirectory + (Environment.get("JWKS_KEYPAIR_FILE") ?? "keypair.jwks")
+        let jwksFilePath = app.directory.workingDirectory + (Environment.get("JWKS_KEYPAIR_FILE") ?? "ProtectedResources/keypair.jwks")
          guard
              let jwks = FileManager.default.contents(atPath: jwksFilePath),
              let jwksString = String(data: jwks, encoding: .utf8)
