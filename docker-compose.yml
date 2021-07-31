@@ -14,6 +14,7 @@ services:
 
   api.doorsid.com-app:
     image: api.doorsid.com:latest
+    container_name: api.doorsid.com-app
     build:
       context: .
     environment:
@@ -51,6 +52,7 @@ services:
 
   db:
     image: postgres
+    container_name: db
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     restart: always
@@ -64,6 +66,7 @@ services:
 
   redis:
     image: 'bitnami/redis:5.0'
+    container_name: redis
     restart: always
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
