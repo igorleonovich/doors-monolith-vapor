@@ -2,4 +2,4 @@
 
 SCRIPT_PATH=$(realpath $0)
 DOORS_SERVER_MONOLITH_PATH=$(dirname $SCRIPT_PATH)
-docker compose -f $DOORS_SERVER_MONOLITH_PATH/docker-compose-dev.yml up -d
+docker compose -f $DOORS_SERVER_MONOLITH_PATH/docker-compose-dev.yml --env-file $DOORS_SERVER_MONOLITH_PATH/.env.development up -d
