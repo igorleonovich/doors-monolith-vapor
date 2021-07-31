@@ -37,6 +37,9 @@ services:
     image: api.doorsid.com:latest
     container_name: api.doorsid.com-app-${DEPLOYMENT_ENVIRONMENT_SHORT}
     restart: always
+    volumes:
+      - "./.env:/app/.env"
+      - "./.env.${DEPLOYMENT_ENVIRONMENT}:/app/.env.${DEPLOYMENT_ENVIRONMENT}"
     build:
       context: .
     environment:
