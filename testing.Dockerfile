@@ -1,5 +1,5 @@
 # 1
-FROM swift:5.3-focal
+FROM swift:5.4-focal
 # 2
 WORKDIR /package
 # 3
