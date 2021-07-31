@@ -71,17 +71,3 @@ services:
       REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     ports:
       - 6379:6379
-
-  api.doorsid.com-nginx:
-    container_name: api.doorsid.com-nginx
-    image: nginx
-    restart: always
-    volumes:
-      - "./default.conf:/etc/nginx/conf.d/default.conf"
-    environment:
-      - VIRTUAL_HOST=api.doorsid.com
-      - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=api.doorsid.com
-      - LETSENCRYPT_EMAIL=mail@doorsid.com
-    expose:
-      - 80
