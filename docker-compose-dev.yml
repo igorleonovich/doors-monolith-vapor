@@ -13,6 +13,16 @@ services:
     ports:
       - 5432:5432
 
+  redis:
+    image: 'bitnami/redis:5.0'
+    restart: always
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      ALLOW_EMPTY_PASSWORD: 1
+      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
+    ports:
+      - 6379:6379
+
   # db-test:
   #   image: postgres
   #   restart: always
@@ -23,18 +33,8 @@ services:
   #   ports:
   #     - 5433:5432
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8100:8080
-
-  redis:
-    image: 'bitnami/redis:5.0'
-    restart: always
-    environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      ALLOW_EMPTY_PASSWORD: 1
-      REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
-    ports:
-      - 6379:6379
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8100:8080
