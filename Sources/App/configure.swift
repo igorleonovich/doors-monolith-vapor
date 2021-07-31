@@ -66,14 +66,14 @@ public func configure(_ app: Application) throws {
     try routes(app)
     
     // MARK: Migrations
-    try migrations(app)    
+    try migrations(app)
     try queues(app)
     try services(app)
     
-    if app.environment == .development {
+//    if app.environment == .development {
         try app.autoMigrate().wait()
         try app.queues.startInProcessJobs()
-    }
+//    }
     
     // MARK: Logs
     app.logger.logLevel = .debug
