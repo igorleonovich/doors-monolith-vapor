@@ -8,7 +8,7 @@ x-shared_environment: &shared_environment
 
 services:
 
-  db-${DEPLOYMENT_ENVIRONMENT_SHORT}:
+  db-prod:
     image: postgres
     container_name: db-${DEPLOYMENT_ENVIRONMENT_SHORT}
     volumes:
@@ -22,7 +22,7 @@ services:
     ports:
       - '${DATABASE_PORT}:5432'
 
-  redis-${DEPLOYMENT_ENVIRONMENT_SHORT}:
+  redis-prod:
     image: bitnami/redis:5.0
     container_name: redis-${DEPLOYMENT_ENVIRONMENT_SHORT}
     restart: always
@@ -33,7 +33,7 @@ services:
     ports:
       - '${REDIS_PORT}:6379'
 
-  api.doorsid.com-app-${DEPLOYMENT_ENVIRONMENT_SHORT}:
+  api.doorsid.com-app-prod:
     image: api.doorsid.com:latest
     container_name: api.doorsid.com-app-${DEPLOYMENT_ENVIRONMENT_SHORT}
     restart: always
