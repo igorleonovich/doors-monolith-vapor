@@ -1,27 +1,31 @@
-# Use postgres/example user/password credentials
-version: '3'
+version: '3.7'
 
 services:
 
   db:
     image: postgres
+    container_name: db
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
     restart: always
     environment:
-      POSTGRES_DB: doors_database
-      POSTGRES_USER: vapor_username
-      POSTGRES_PASSWORD: vapor_password
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - 5432:5432
+      - '5432:5432'
 
   redis:
-    image: 'bitnami/redis:5.0'
+    image: bitnami/redis:5.0
+    container_name: redis
     restart: always
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       ALLOW_EMPTY_PASSWORD: 1
       REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     ports:
-      - 6379:6379
+      - '6379:6379'
 
   # db-test:
   #   image: postgres
