@@ -6,7 +6,7 @@ func queues(_ app: Application) throws {
     if app.environment != .testing {
         try app.queues.use(
             .redis(url:
-                Environment.get("REDIS_URL") ?? ""
+                "redis://\(Environment.get("REDIS_USERNAME") ?? ""):\(Environment.get("REDIS_PASSWORD") ?? "")@\(Environment.get("REDIS_HOST") ?? ""):\(Environment.get("REDIS_PORT") ?? "6379")"
             )
         )
     }
