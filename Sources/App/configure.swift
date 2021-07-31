@@ -1,8 +1,6 @@
 import Fluent
 import FluentPostgresDriver
 import JWT
-import Leaf
-import LeafKit
 import Mailgun
 import QueuesRedisDriver
 import Vapor
