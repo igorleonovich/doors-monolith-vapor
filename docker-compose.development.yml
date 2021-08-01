@@ -1,8 +1,5 @@
 version: '3.7'
 
-volumes:
-  db_data:
-
 services:
 
   db-${DEPLOYMENT_ENVIRONMENT_SHORT}:
