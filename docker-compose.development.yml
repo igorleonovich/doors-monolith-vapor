@@ -6,7 +6,7 @@ services:
     image: postgres
     container_name: db-${DEPLOYMENT_ENVIRONMENT_SHORT}
     volumes:
-      - db_data-${DEPLOYMENT_ENVIRONMENT_SHORT}:/var/lib/postgresql/data/pgdata
+      - "./db_data-${DEPLOYMENT_ENVIRONMENT_SHORT}:/var/lib/postgresql/data/pgdata"
     restart: always
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
