@@ -67,14 +67,17 @@ public func configure(_ app: Application) throws {
     
     // MARK: Migrations
     try migrations(app)
-    try queues(app)
-    try services(app)
+    try app.autoMigrate().wait()
     
-//    if app.environment == .development {
-        try app.autoMigrate().wait()
+    // MARK: Queues
+    try queues(app)
+    if app.environment == .development {
         try app.queues.startInProcessJobs()
-//    }
+    }
     
     // MARK: Logs
     app.logger.logLevel = .debug
+    
+    // MARK: Services
+    try services(app)
 }
