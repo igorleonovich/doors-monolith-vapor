@@ -20,7 +20,7 @@ services:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - ${DATABASE_PORT}:5432
+      - ${DATABASE_PORT}:${DEFAULT_DATABASE_PORT}
 
   redis-prod:
     image: bitnami/redis:5.0
@@ -31,7 +31,7 @@ services:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
       REDIS_DISABLE_COMMANDS: FLUSHDB,FLUSHALL
     ports:
-      - ${REDIS_PORT}:6379
+      - ${REDIS_PORT}:${DEFAULT_REDIS_PORT}
 
   api.doorsid.com-app-prod:
     image: api.doorsid.com:latest
