@@ -1,3 +1,3 @@
-# DoorsMonolith
+# Doors Monolith (Vapor) (Concept)
 
-Vapor backend with JWT & Basic auth (concept)
+A Vapor monolith backend with JWT & Basic Auth
